@@ -20,7 +20,7 @@ mongoose.connect(dbConfig.db, {
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: false
+    extended: true
 }));
 
 app.use(cors());
@@ -29,7 +29,7 @@ app.use('/public', express.static('public'));
 
 app.use('/api', api)
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 6001;
 const server = app.listen(port, () => {
     console.log('Connected to port ' + port)
 })

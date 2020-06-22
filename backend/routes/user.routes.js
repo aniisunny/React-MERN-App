@@ -4,8 +4,6 @@ let express = require('express'),
     uuidv4 = require('uuid/v4'),
     router = express.Router();
 
-let userSchema = require('../models/User');
-
 const DIR = './public/';
 
 const storage = multer.diskStorage({
@@ -14,14 +12,14 @@ const storage = multer.diskStorage({
     },
     filename: (req, file, cb) => {
         const fileName = file.originalname.toLowerCase().split(' ').join('-');
-        cb(null, uuidv4() + '-' + fileName)
+        cb(null, uuidv4() + "-" + fileName)
     }
 });
 
 var upload = multer({
     storage: storage, 
     fileFilter: (req, file, cb) => {
-        if (file.mimetype == "image/png" || file.mimetype == "image/jpeg" || file.mimetype == "application/pdf" || file.mimetype == "video/mp4") {
+        if (file.mimetype === "image/png" || file.mimetype === "image/jpeg" || file.mimetype === "application/pdf" || file.mimetype === "video/mp4") {
             cb(null, true);
         }
         else {
@@ -49,7 +47,7 @@ router.post('/user-profile', upload.single('profileImg'), (req, res, next) => {
             }
         })
     }).catch(err => {
-        console.log(err), 
+        console.log(err)
             res.status(500).json({
                 error: err
             });
