@@ -17,7 +17,7 @@ class ListsComponent extends Component {
         axios.get ('http://localhost:6001/api')
         .then(res => {
             this.setState({
-                userData: res.data
+                userData: res.users
             });
         })
         .catch(error => {
