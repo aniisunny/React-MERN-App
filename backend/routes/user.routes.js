@@ -63,12 +63,24 @@ router.get("/", (req, res, next) => {
     });
 });
 
+var fs = require('fs')
+
 router.route('/delete-image/:id').delete((req, res, next) => {
     User.findByIdAndRemove(req.params.id, (error, data) => {
         if(error) {
             return next(error);
         }
         else {
+            // fs.unlink(DIR+req.file.filename, err => {
+            //     if(err) {
+            //         return next(err);
+            //     }
+            //     else {
+            //         res.status(200).json({
+            //             msg: data
+            //         })
+            //     }
+            // })
             res.status(200).json({
                 msg: data
             })
