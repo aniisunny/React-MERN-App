@@ -14,7 +14,7 @@ class ListsComponent extends Component {
     }
 
     componentDidMount () {
-        axios.get ('http://localhost:6001/api')
+        axios.get ('http://localhost:4000/api')
         .then(res => {
             this.setState({
                 userData: res.users
