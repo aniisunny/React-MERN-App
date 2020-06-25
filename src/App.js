@@ -10,6 +10,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import FilesUploadComponent from './Components/FilesUploadComponent';
 import ListsComponent from './Components/ListsComponent';
+import Statistics from './Components/Statistics';
 
 function App() {
   return ( 
@@ -36,6 +37,12 @@ function App() {
                   Modify Files
                 </Link>
               </Nav>
+
+              <Nav>
+                <Link to={"/statistics"} className="nav-link">
+                  Statistics
+                </Link>
+              </Nav>
             </Nav>
           </Container>
         </Navbar>
@@ -49,6 +56,7 @@ function App() {
                 <Route exact path='/' component={FilesUploadComponent} />
                 <Route path="/upload-files" component={FilesUploadComponent} />
                 <Route path="/modify-files" component={ListsComponent} />
+                <Route path="/statistics" component={Statistics} />
               </Switch>
             </div>
           </Col>
