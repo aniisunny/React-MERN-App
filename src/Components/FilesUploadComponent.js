@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
 import './FilesComponent.css'
 import axios from 'axios';
+import ListsComponent from './ListsComponent';
 
 class FilesUploadComponent extends Component {
 
