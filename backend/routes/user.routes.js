@@ -30,14 +30,15 @@ var upload = multer({
     }
 });
 
-let User = require('../models/User');
+let User = require('../models/user');
 
 router.post('/user-profile', upload.single('profileImg'), (req, res, next) => {
     const url = req.protocol + '://' + req.get('host')
     const user = new User({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
-        profileImg: url + '/public/' + req.file.filename
+        //profileImg: url + '/public/' + req.file.filename
+        profileImg: req.file.filename
     });
     user.save().then(result => {
         res.status(201).json({
@@ -88,5 +89,23 @@ router.route('/delete-image/:id').delete((req, res, next) => {
         }
     })
 }) 
+
+const path = require('path');
+
+router.route('/download/:file(*)').get((req, res, next) => {
+    User.find(req, (error, data) => {
+        if(error) {
+            return next(error);
+        }
+        else {
+            var file = req.params.file;
+            var fileLocation = path.join(DIR, file);
+            res.download(fileLocation, file);
+            res.status(200).json({ 
+                msg: "Successfully Downloaded!"
+            })
+        }
+    })
+})
 
 module.exports = router;

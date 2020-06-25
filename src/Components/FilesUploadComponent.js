@@ -18,16 +18,20 @@ class FilesUploadComponent extends Component {
     }
 
     onFileChange(e) {
+        console.log(e.target.files[0])
         this.setState({profileImg: e.target.files[0]})
     }
 
     onSubmit(e) {
         e.preventDefault()
-        const formData = new FormData()
-        formData.append('profileImg', this.state.profileImg)
-        axios.post("http://localhost:6001/api/user-profile", formData)
+        const formData = {
+            profileImg: this.state.profileImg
+        };
+        //const formData = new FormData()
+        //formData.append('profileImg', this.state.profileImg)
+        axios.post('http://localhost:4000/api/user-profile', formData)
         .then(res => {
-            console.log(res)
+            console.log(res.data)
         })
     }
 
