@@ -38,6 +38,31 @@ li a {
     text-decoration: none;
 }
 
+.upload {
+    margin-top: 8px;
+    margin-bottom: 24px;
+    font: 24px Arial, sans-serif;
+    font-size: 24px;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.inputfile {
+    margin-top: 8px;
+    margin-left: 40%;
+    margin-bottom: 24px;
+    font: 16px Arial, sans-serif;
+    font-size: 16px;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
 .button {
     background-color: #ddd;
     border: none;

@@ -18,30 +18,40 @@ class FilesUploadComponent extends Component {
     }
 
     onFileChange(e) {
-        console.log(e.target.files[0])
         this.setState({profileImg: e.target.files[0]})
     }
 
     onSubmit(e) {
         e.preventDefault()
-        const formData = {
-            profileImg: this.state.profileImg
-        };
-        //const formData = new FormData()
-        //formData.append('profileImg', this.state.profileImg)
-        axios.post('http://localhost:4000/api/user-profile', formData)
+        const formData = new FormData()
+        formData.append('profileImg', this.state.profileImg)
+        axios.post('http://localhost:4000/api/user-profile', formData, {})
         .then(res => {
-            console.log(res.data)
+            console.log(res)
         })
     }
 
     render() {
         return (
+            // <div  className="container">
+            //     <div className="row">
+            //         <form onSubmit={this.onSubmit}>
+            //             <div className="form-group">
+            //                 <input type="file" onChange={this.onFileChange} />
+            //             </div>
+            //             <div className="form-group">
+            //                 <button className="btn btn-primary" type="submit">
+            //                     Upload 
+            //                 </button>
+            //             </div>
+            //         </form>
+            //     </div>
+            // </div>
             <div className="files">
-                <Form>
+                <Form onSubmit={this.onSubmit}>
                     <Form.Group controlId="File">
-                        <Form.Label>Upload a File</Form.Label>
-                        <Form.Control type="file" />
+                        <Form.Label className="upload">Upload a File</Form.Label>
+                        <Form.Control className = "inputfile" type="file" onChange={this.onFileChange} />
                     </Form.Group>
 
                     <Button variant="danger" size="lg" block="block" type="submit">

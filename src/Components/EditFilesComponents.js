@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
-class EditsFilesComponent extends Component {
+class EditFilesComponent extends Component {
 
     render () {
         return (
             <div>
-
+                hello
             </div>
         )
     }
 }
 
-export default EditsFilesComponent
+export default EditFilesComponent

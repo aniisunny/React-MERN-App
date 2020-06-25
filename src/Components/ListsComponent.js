@@ -33,7 +33,7 @@ class ListsComponent extends Component {
 
     render () {
         return (
-            <div class="table-wrapper">
+            <div classname="table-wrapper">
                 <Table striped bordered hover>
                     <thead>
                         <tr>
